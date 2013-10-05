@@ -1,4 +1,4 @@
-Stumble
-=======
+Stumbl
+======
 
 Image-sharing platform for Android
