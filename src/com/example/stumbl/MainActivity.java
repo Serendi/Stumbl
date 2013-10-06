@@ -18,23 +18,23 @@ public class MainActivity extends Activity {
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    	super.onCreate(savedInstanceState);
+    	setContentView(R.layout.activity_main);
     
-        iv = (ImageView) findViewById(R.id.imageView); 
+    	iv = (ImageView) findViewById(R.id.imageView5); 
         
-        Button btn = (Button) findViewById(R.id.takephoto);
+    	Button btn = (Button) findViewById(R.id.takephoto);
         btn.setOnClickListener(new OnClickListener()
         {
-        	
+        	@Override
         	public void onClick(View w)
         	{
         		Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        		startActivityForResult(intent,0);	
+        		startActivityForResult(intent, 0);
         		
         	}
         	
-        });       
+        });
     
     }
     
@@ -47,6 +47,13 @@ public class MainActivity extends Activity {
     		iv.setImageBitmap(theImage);
     		
     	}
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
     
 }
