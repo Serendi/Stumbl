@@ -1,14 +1,18 @@
 package com.example.stumbl;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.ExifInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class MainActivity extends Activity {
@@ -20,9 +24,9 @@ public class MainActivity extends Activity {
     	super.onCreate(savedInstanceState);
     	setContentView(R.layout.activity_main);
     
-    	iv = (ImageView) findViewById(R.id.imageView5); 
+    	iv = (ImageView) findViewById(R.id.imageView1); 
         
-    	Button btn = (Button) findViewById(R.id.takephoto);
+    	ImageButton btn = (ImageButton) findViewById(R.id.takephoto);
         btn.setOnClickListener(new OnClickListener()
         {
         	@Override
