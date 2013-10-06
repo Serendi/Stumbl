@@ -3,7 +3,6 @@ package com.example.stumbl;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Camera;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -54,6 +53,20 @@ public class MainActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+    
+        public float[] getGeolocation(String fileName) {
+    	ExifInterface inter;
+    	try {
+    		inter = new ExifInterface(fileName);
+    	}
+    	catch(IOException e) {
+    		return null;
+    	}
+    	float[] output = new float[2];
+    	inter.getLatLong(output);
+    	
+    	return output;
     }
     
 }
