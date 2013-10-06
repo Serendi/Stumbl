@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Camera;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.provider.MediaStore.Images;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -35,6 +37,8 @@ public class MainActivity extends Activity {
         	}
         	
         });
+        
+        saveImageToGallery(iv);
     
     }
     
@@ -54,6 +58,17 @@ public class MainActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+    
+    private void saveImageToGallery(View b){
+    	b = findViewById(R.id.imageView5);
+    	
+    	b.setDrawingCacheEnabled(true);
+        Bitmap bitmap  = b.getDrawingCache();
+        String title = new String("My title");
+        String description = new String("This is a description");
+        MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, title, description);
+     
     }
     
 }
