@@ -47,4 +47,14 @@
         android:layout_below="@+id/imageView3"
         android:src="@android:drawable/bottom_bar" />
 
+    <ImageButton
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_launcher"
+        style="android:attr/borderlessButtonStyle"
+        android:background = "@drawable/roundedbutton" />
+
 </RelativeLayout>
