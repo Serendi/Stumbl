@@ -1,42 +1,18 @@
 package com.example.stumbl;
 
 import android.app.Activity;
-import android.graphics.Camera;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.media.ExifInterface; // For ExifInterface method to deal with Exif
+import java.io.IOException; // For catching IOExceptions
 
 public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        safeCameraOpen(1);
         setContentView(R.layout.activity_main);
-    }
-
-    
-    private boolean safeCameraOpen(int id) {
-        boolean qOpened = false;
-      
-        try {
-            releaseCameraAndPreview();
-            mCamera = Camera.open(id);
-            qOpened = (mCamera != null);
-        } catch (Exception e) {
-            Log.e(getString(R.string.app_name), "failed to open Camera");
-            e.printStackTrace();
-        }
-
-        return qOpened;    
-    }
-
-    private void releaseCameraAndPreview() {
-        mPreview.setCamera(null);
-        if (mCamera != null) {
-            mCamera.release();
-            mCamera = null;
-        }
     }
     
 
@@ -45,6 +21,20 @@ public class MainActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+    
+    public float[] getGeolocation(String fileName) {
+    	ExifInterface inter;
+    	try {
+    		inter = new ExifInterface(fileName);
+    	}
+    	catch(IOException e) {
+    		return null;
+    	}
+    	float[] output = new float[2];
+    	inter.getLatLong(output);
+    	
+    	return output;
     }
     
 }
