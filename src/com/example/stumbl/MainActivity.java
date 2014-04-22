@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.hardware.Camera;
 import android.media.ExifInterface;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,7 +24,8 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	ImageView iv; 
+	ImageView iv;
+	//Camera mCamera = Camera.open();
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,22 +48,28 @@ public class MainActivity extends Activity {
  
         }); /* end elements */
         
-    	/* camera */
+//    	/* camera */
+//        
+//    	ImageButton btn = (ImageButton) findViewById(R.id.takephoto);
+//        btn.setOnClickListener(new OnClickListener()
+//        {
+//        	@Override
+//        	public void onClick(View w)
+//        	{
+//        		Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+//        		startActivityForResult(intent, 0);
+//        		
+//        	}
+//        	
+//        }); /* end camera */
         
-    	ImageButton btn = (ImageButton) findViewById(R.id.takephoto);
-        btn.setOnClickListener(new OnClickListener()
-        {
-        	@Override
-        	public void onClick(View w)
-        	{
-        		Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        		startActivityForResult(intent, 0);
-        		
-        	}
-        	
-        }); /* end camera */
+        /* camera attempt 2 */
+        //safeCameraOpen(0);
+    
+        /* camera attempt 3 */
         
     }
+    
     
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -199,3 +207,5 @@ public class MainActivity extends Activity {
         }
     
 }
+
+
